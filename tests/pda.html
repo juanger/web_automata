@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>PDA</title>
+        <script src="../library/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../library/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../library/raphael.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/raphael.automata.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/pda.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/tape.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/stack.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="dfa.css" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="tape.css" type="text/css" charset="utf-8">
+    </head>
+    <body>
+      <script>
+        $(window).load(function () {
+          paper = Raphael("canvas");
+          var states = [paper.state(100, 100, 0, {initial: true}),
+                        paper.state(300, 100, 1),
+                        paper.state(500, 100, 2, {accepts: true})]
+
+          M1 = pda({
+            canvas: paper,
+            states: states,
+            delta: {
+              '0': {
+                'a,Z': [0,'AZ'],
+                'a,A': [0,'AA'],
+                'ε,A': [1,'ε'],
+                'ε,Z': [1,'ε']
+              },
+              '1': {
+                'b,A': [1,'ε'],
+                'ε,Z': [2, 'Z']
+              },
+              '2': {}
+            },
+            tape: "string",
+            stack: "stack"
+          });
+        });
+      </script>
+      <span id="string">aaaabbbb</span>
+      <span id="stack">Z</span>
+      <div id="canvas"></div>
+      <input type="button" onClick="M1.step();" id="step" name="step" value="Paso"/>
+      <input type="button" onClick="M1.run();" name="run" value="Corre"/>
+      <input type="button" onClick="M1.pause();" name="pause" value="Pausa"/>
+
+      <input type="button" onClick="M1.reset();" name="reset" value="Reiniciar"/>
+    </body>
+</html>

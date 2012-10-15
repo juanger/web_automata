@@ -1,0 +1,37 @@
+.ui-tape {
+  border-top: solid 1px silver;
+  border-bottom: solid 1px silver;
+  border-right: solid 1px silver;
+}
+
+.ui-stack {
+  color: white;
+  border-top: solid 1px silver;
+  border-bottom: solid 1px silver;
+  border-right: solid 1px silver;
+}
+
+
+.ui-current {
+  background: red;
+  color: white;
+}
+
+.ui-symbol {
+  border-left: solid 1px silver;
+  padding: 0 10px;
+}
+
+.ui-stack .ui-symbol {
+  text-align: center;
+  display: block;
+  float: left;
+  clear: left;
+  width: 30px;
+  border-bottom: solid 1px silver;
+  border-right: solid 1px silver;
+}
+
+.ui-stack .ui-symbol:first-child {
+  border-top: solid 1px silver;
+}

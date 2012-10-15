@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>DFA</title>
+        <script src="../library/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../library/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../library/raphael.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/raphael.automata.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/dfa.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../raphael.automata/tape.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="dfa.css" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="tape.css" type="text/css" charset="utf-8">
+    </head>
+    <body>
+      <script>
+        $(window).load(function () {
+          paper = Raphael("canvas");
+          var states = [paper.state(50, 50, 0, {initial: true}),
+                        paper.state(200, 100, 1),
+                        paper.state(50, 300, 2, {accepts: true})]
+
+          M1 = dfa({
+            canvas: paper,
+            states: states,
+            delta: {
+              '0': {'a': 1},
+              '1': {'b': 2},
+              '2': {'a': 1}
+            },
+            tape: "string"
+          });
+        });
+      </script>
+      <span id="string">ababababab</span>
+      <div id="canvas"></div>
+      <input type="button" onClick="M1.step();" id="step" name="step" value="Paso"/>
+      <input type="button" onClick="M1.run();" name="run" value="Corre"/>
+      <input type="button" onClick="M1.pause();" name="pause" value="Pausa"/>
+
+      <input type="button" onClick="M1.reset();" name="reset" value="Reiniciar"/>
+    </body>
+</html>

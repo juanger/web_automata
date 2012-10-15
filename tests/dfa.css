@@ -1,0 +1,38 @@
+body {
+  background-color: #202020;
+}
+
+svg {
+  background-color: #FFF;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+text {
+  pointer-events: none;
+}
+
+#canvas {
+  margin-top: 30px;
+  width: 640px;
+  height: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ui-tape {
+  color: white;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+  border-right: solid 1px white;
+}
+
+.ui-current {
+  background: red;
+  color: white;
+}
+
+.ui-symbol {
+  border-left: solid 1px white;
+  padding: 0 10px;
+}
